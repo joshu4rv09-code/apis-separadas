@@ -1,10 +1,10 @@
-#  Proyecto APIs Flutter Separadas – 2 APIs + 2 Apps + SQLite Compartida
+# 🚀 Proyecto APIs Flutter Separadas – 2 APIs + 2 Apps + SQLite Compartida
 
 Proyecto en el Escritorio: `C:\Users\romev\OneDrive\Desktop\proyecto_apis_flutter_separadas`
 
 ---
 
-##  Arquitectura del Proyecto
+## 🏗️ Arquitectura del Proyecto
 
 Cada API y cada App Flutter corren **de forma completamente independiente** pero **comparten la misma base de datos SQLite** (`alarmas.db` del examen UTH).
 
@@ -36,9 +36,9 @@ C:\Users\romev\OneDrive\Desktop\examen_alarma_fullstack\backend\alarmas.db
 
 ---
 
-##  Pasos para Ejecutar (3 formas)
+## ⚡ Pasos para Ejecutar (3 formas)
 
->  **Nota Importante:** Como ambas APIs están configuradas en el puerto **5238**, se ejecutan **por separado**. Los scripts liberan automáticamente el puerto 5238 antes de iniciar.
+> 💡 **Nota Importante:** Como ambas APIs están configuradas en el puerto **5238**, se ejecutan **por separado**. Los scripts liberan automáticamente el puerto 5238 antes de iniciar.
 
 ### FORMA 1: Doble clic en scripts `.bat`
 
@@ -114,7 +114,7 @@ flutter run -d android_lite_28
 
 ---
 
-##  Consola de Salida (lo que verás en Debug Console de VS Code)
+## 📋 Consola de Salida (lo que verás en Debug Console de VS Code)
 
 ### App Saludo – al presionar "Presionar para Saludar":
 ```

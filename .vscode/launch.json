@@ -1,0 +1,115 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // ─── API 1: SALUDO (puerto 5238 por separado) ────────────────────────
+    {
+      "name": "API 1 – Saludo (puerto 5238)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-api-saludo",
+      "program": "${workspaceFolder}/api_saludo/bin/Debug/net10.0/ApiSaludo.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/api_saludo",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://0.0.0.0:5238"
+      }
+    },
+
+    // ─── API 2: DOBLE (puerto 5238 por separado) ─────────────────────────
+    {
+      "name": "API 2 – Doble (puerto 5238)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-api-doble",
+      "program": "${workspaceFolder}/api_doble/bin/Debug/net10.0/ApiDoble.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/api_doble",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://0.0.0.0:5238"
+      }
+    },
+
+    // ─── Flutter App Saludo – Google Chrome ──────────────────────────────
+    {
+      "name": "App Saludo – Chrome (puerto 8081)",
+      "cwd": "${workspaceFolder}/app_saludo",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "chrome",
+      "args": ["-d", "chrome", "--web-port", "8081"]
+    },
+
+    // ─── Flutter App Doble – Google Chrome ───────────────────────────────
+    {
+      "name": "App Doble – Chrome (puerto 8082)",
+      "cwd": "${workspaceFolder}/app_doble",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "chrome",
+      "args": ["-d", "chrome", "--web-port", "8082"]
+    },
+
+    // ─── Flutter App Saludo – Emulador Android API 28 ────────────────────
+    {
+      "name": "App Saludo – Android Emulador (API 28)",
+      "cwd": "${workspaceFolder}/app_saludo",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "android_lite_28"
+    },
+
+    // ─── Flutter App Doble – Emulador Android API 28 ─────────────────────
+    {
+      "name": "App Doble – Android Emulador (API 28)",
+      "cwd": "${workspaceFolder}/app_doble",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "android_lite_28"
+    }
+  ],
+
+  "compounds": [
+    {
+      "name": "FULL: API Saludo + App Saludo Chrome",
+      "configurations": [
+        "API 1 – Saludo (puerto 5238)",
+        "App Saludo – Chrome (puerto 8081)"
+      ]
+    },
+    {
+      "name": "FULL: API Doble + App Doble Chrome",
+      "configurations": [
+        "API 2 – Doble (puerto 5238)",
+        "App Doble – Chrome (puerto 8082)"
+      ]
+    },
+    {
+      "name": "FULL: API Saludo + App Saludo Android",
+      "configurations": [
+        "API 1 – Saludo (puerto 5238)",
+        "App Saludo – Android Emulador (API 28)"
+      ]
+    },
+    {
+      "name": "FULL: API Doble + App Doble Android",
+      "configurations": [
+        "API 2 – Doble (puerto 5238)",
+        "App Doble – Android Emulador (API 28)"
+      ]
+    }
+  ]
+}

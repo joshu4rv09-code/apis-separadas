@@ -1,0 +1,101 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // ─────────────── BUILDS ────────────────────────────────────────────
+    {
+      "label": "build-api-saludo",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/api_saludo/ApiSaludo.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-api-doble",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/api_doble/ApiDoble.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+
+    // ─────────────── CONSULTAS SQLite ──────────────────────────────────
+    {
+      "label": "SQLite: Ver tabla Saludos",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/api_saludo/ApiSaludo.csproj",
+        "--",
+        "query",
+        "SELECT id_saludo, nombre, mensaje_saludo, fecha_creacion FROM Saludos ORDER BY id_saludo DESC"
+      ],
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "new", "focus": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "SQLite: Ver tabla CalculosDoble",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/api_doble/ApiDoble.csproj",
+        "--",
+        "query",
+        "SELECT id_calculo, numero_entrada, resultado_doble, fecha_creacion FROM CalculosDoble ORDER BY id_calculo DESC"
+      ],
+      "presentation": { "reveal": "always", "panel": "new", "focus": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "SQLite: Ver tabla Alarma (examen)",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/api_saludo/ApiSaludo.csproj",
+        "--",
+        "query",
+        "SELECT id_alarma, hora, periodicidad, estado, fecha_creacion FROM Alarma ORDER BY id_alarma ASC"
+      ],
+      "presentation": { "reveal": "always", "panel": "new", "focus": true },
+      "problemMatcher": []
+    },
+
+    // ─────────────── CHROME ────────────────────────────────────────────
+    {
+      "label": "Chrome: Swagger API (Puerto 5238)",
+      "type": "shell",
+      "command": "start chrome http://localhost:5238/swagger",
+      "problemMatcher": []
+    },
+    {
+      "label": "Chrome: Visor SQLite API (Puerto 5238)",
+      "type": "shell",
+      "command": "start chrome http://localhost:5238/visor",
+      "problemMatcher": []
+    },
+
+    // ─────────────── EMULADOR ANDROID ──────────────────────────────────
+    {
+      "label": "Emulador Android 9 (API 28)",
+      "type": "shell",
+      "command": "C:\\Users\\romev\\AppData\\Local\\Android\\Sdk\\emulator\\emulator.exe -avd android_lite_28 -gpu swiftshader_indirect",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
