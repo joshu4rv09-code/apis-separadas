@@ -1,0 +1,26 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+*.lock
+
+# Android
+local.properties
+.gradle/
+captures/
+**/android/.gradle/
+**/android/app/build/
+
+# SQLite DB files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
